@@ -8,6 +8,5 @@ public interface WEB {
 	
 	public String login = "Login.jsp";
 	public String home = "Home.jsp";
-	public String register = "Register.jsp";
 
 }
