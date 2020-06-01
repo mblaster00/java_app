@@ -1,24 +1,31 @@
- package com.JavaWebApplication.Model;
+package com.JavaWebApplication.Model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.mindrot.jbcrypt.BCrypt;
+
+import com.JavaWebApplication.Beans.Chauffeur;
 import com.JavaWebApplication.Beans.Users;
 
 public class UsersDb {
 	
 	String s1 = null;
 	
-	public String insertUser(Users rb) {
+	MyDb db = new MyDb();
+	Connection con = db.getCon();
+	
+	
+	public String insertUsers(Users rb) {
 		
-		MyDb db = new MyDb();
-		Connection con = db.getCon();
 		
 		try {
+			
 			Statement stmt = con.createStatement();
-			stmt.executeUpdate("insert into Users(username, email, password) "
-					+ "values ('"+rb.getUsername()+"','"+rb.getEmail()+"','"+rb.getPassword()+"')");
+			stmt.executeUpdate("insert into users(username, password, role) "
+					+ "values ('"+rb.getUsername()+"','"+rb.getPassword()+"','"+rb.getRole()+"')");
 			
 			s1 = "data insert is ok";
 		}
@@ -31,21 +38,46 @@ public class UsersDb {
 		return s1;
 	}
 	
+	
+	
+	public String insertChauffeur(Chauffeur rb) {
+		
+		try {
+			
+			Statement stmt = con.createStatement();
+			stmt.executeUpdate("insert into chauffeur(service, identite) "
+					+ "values ('"+rb.getService()+"','"+rb.getIdentite()+"')");
+			
+			s1 = "data insert is ok";
+		}
+		
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return s1;
+		
+	}
+	
+	
+	
 	public String findUser(Users rb) {
 		
-		MyDb db = new MyDb();
-		Connection con = db.getCon();
 		ResultSet rs;
 		String s1 = "not success";
 		
 		try {
 			
 			Statement stmt = con.createStatement();
-			rs = stmt.executeQuery("select username, password from users where username='"+rb.getUsername()+"'and password='"+rb.getPassword()+"'");
+			rs = stmt.executeQuery("select * from users where username='"+rb.getUsername()+"'");
 			
-			if (rs.next()) {
+			while (rs.next()) {
 				
-				s1 = "success";
+	            if (BCrypt.checkpw(rb.getPassword(), rs.getString("password"))) {
+				
+	            	s1 = "success";
+	            }
 			}
 		}
 		

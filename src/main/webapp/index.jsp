@@ -87,39 +87,42 @@
 						</div>
 						<div class="col-lg-5  col-md-6 header-right">
 							<h4 class="text-white pb-30">Formulaire</h4>
-							<form method="post" class="form" role="form" autocomplete="off" action="http://localhost:8080/JavaWebApplication/Register">
+							<form method="post" class="form" autocomplete="off" action="http://localhost:8080/JavaWebApplication/Register">
 								<div class="from-group">
-							    	<input class="form-control txt-field" type="text" name="username" placeholder="Pseudo" required>
-							    	<input class="form-control txt-field" type="password" name="password" placeholder="Mot de passe" required>
-									<input class="form-control txt-field" type="password" placeholder="Confirmer mot de passe" required>
+							    	<input class="form-control txt-field" type="text" name="username" placeholder="Pseudo" minlength="3" required>
+							    	<input class="form-control txt-field" type="password" name="password" id="password" placeholder="Mot de passe" minlength="6" required>
+									<input class="form-control txt-field" type="password"id="cfpassword" placeholder="Confirmer mot de passe" required>
 								</div>
 								<div class="form-group">
 							       	<div class="default-select" id="default-select" >
-										<select name="role" required>
-											<option value="" disabled selected hidden>Role</option>
-											<option value="1">Chauffeur</option>
-											<option value="2">Client</option>
+										<select id="role" name="role" required>
+											<option value="" disabled selected hidden>indiquer votre statut</option>
+											<option value="chauffeur">Chauffeur</option>
+											<option value="client">Client</option>
 										</select>
 									</div>
 							    </div>
-								<div class="form-group">
-							       	<div class="default-select" id="default-select" >
-										<select name="type" required>
-											<option value="" disabled selected hidden>Indiquer le type</option>
-											<option value="1">Taxi Simple</option>
-											<option value="2">Covoiturage</option>
-											<option value="3">Taxi Bokko</option>
-										</select>
-									</div>
-							    </div>
-								<div class="from-group">
-									<input class="form-control txt-field" type="numero" name="identite" placeholder="Carte d'identite" required>
+							    <div id="driver" style="display: none;" pk="1">
+									<div class="form-group">
+								       	<div class="default-select" id="default-select" >
+											<select id="service" name="service">
+												<option value="" disabled selected hidden>indiquer le service</option>
+												<option value="taxi_simple">Taxi Simple</option>
+												<option value="covoiturage">Covoiturage</option>
+												<option value="taxi_bokko">Taxi Bokko</option>
+											</select>
+										</div>
+								    </div>
+									<div class="from-group">
+										<input class="form-control txt-field" type="text" id="identite" name="identite" placeholder="Carte d'identite" pattern="[0-9]{12}">
+								    </div>
 							    </div>
 							    <div class="form-group row">
 							        <div class="col-md-12">
-							            <button type="submit" class="btn btn-default btn-lg btn-block text-center text-uppercase">S'inscrire</button>
+							            <button id="submit" type="submit" class="btn btn-default btn-lg btn-block text-center text-uppercase">S'inscrire</button>
 							        </div>
 							    </div>
+							    <div id='message'></div>
 							</form>
 						</div>											
 					</div>

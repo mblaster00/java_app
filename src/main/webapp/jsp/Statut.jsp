@@ -94,15 +94,15 @@
 		                                <div class="form-group">
 									       	<div class="default-select" id="default-select" >
 												<select name="statut" required>
-													<option value="" disabled selected hidden>Indiquer votre statut</option>
-													<option value="1">Libre</option>
-													<option value="2">En service</option>
+													<option disabled selected hidden>Indiquer votre statut</option>
+													<option value="libre">Libre</option>
+													<option value="en_service">En service</option>
 												</select>
 											</div>
 									    </div>
 									    <div class="form-group row">
 									        <div class="col-md-12">
-									            <button type="reset" class="btn btn-default btn-lg btn-block text-center text-uppercase">Valider</button>
+									            <button type="submit" class="btn btn-default btn-lg btn-block text-center text-uppercase">Valider</button>
 									        </div>
 									    </div>
 									</form>

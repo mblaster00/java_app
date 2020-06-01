@@ -93,11 +93,11 @@
 									    <div class="form-group">
 									       	<div class="default-select" id="default-select" >
 												<select name="type" required>
-													<option value="" disabled selected hidden>Indiquer le moyen</option>
-													<option value="1">Taxi Simple</option>
-													<option value="2">Covoiturage</option>
-													<option value="3">Taxi Boko</option>
-		                                            <option value="3">N'importe lequel</option>
+													<option disabled selected hidden>Indiquer le moyen</option>
+													<option value="taxi_simple">Taxi Simple</option>
+													<option value="covoiturage">Covoiturage</option>
+													<option value="taxi_bokko">Taxi Bokko</option>
+		                                            <option value="all">N'importe lequel</option>
 												</select>
 											</div>
 									    </div>
@@ -106,7 +106,7 @@
 									    </div>
 									    <div class="form-group row">
 									        <div class="col-md-12">
-									            <button type="reset" class="btn btn-default btn-lg btn-block text-center text-uppercase">Valider</button>
+									            <button type="submit" class="btn btn-default btn-lg btn-block text-center text-uppercase">Valider</button>
 									        </div>
 									    </div>
 									</form>

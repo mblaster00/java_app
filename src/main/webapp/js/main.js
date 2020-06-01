@@ -1,3 +1,33 @@
+// Code
+
+$('#cfpassword').on('keyup', function () {
+	if($('#password').val().length >= 6){
+	  if ($('#password').val() == $('#cfpassword').val()) {
+		  $('#message').html('');
+		  document.getElementById('submit').disabled = false;
+	  } 
+	  else {
+		  $('#message').html('Not Matching').css('color', 'red');
+		  document.getElementById('submit').disabled = true;
+	  }
+	}
+});
+
+
+$("#role").change(function () {
+    	
+    var selected_option = $('#role').val();
+
+    if (selected_option === 'chauffeur') {
+    	$('#driver').attr('pk','1').show();
+    	$('#service').attr("required", true);
+    	$('#identite').attr("required", true);
+    }
+    if (selected_option != 'chauffeur') {
+    	$("#driver").removeAttr('pk').hide();
+    }
+ });
+
 
 $(document).ready(function(){
 	"use strict";
